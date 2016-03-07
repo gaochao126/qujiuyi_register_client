@@ -24,4 +24,12 @@ public interface NumSourceService {
      * @throws Exception
      */
     public ResponseDto syncDoctorNumSource(final NumSourceDto numSourceDto) throws Exception;
+
+    /**
+     * @description 挂号费用查询
+     * @param numSourceDto
+     * @return
+     * @throws Exception
+     */
+    public ResponseDto getVisitCost(NumSourceDto numSourceDto) throws Exception;
 }
