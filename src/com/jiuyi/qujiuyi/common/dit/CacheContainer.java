@@ -40,6 +40,7 @@ public class CacheContainer {
         tokenMap = new ConcurrentHashMap<String, Long>();
 
         serviceMap.put("getNumSource", NumSourceService.class);
+        serviceMap.put("getVisitCost", NumSourceService.class);
         serviceMap.put("getDoctors", DoctorService.class);
         serviceMap.put("commitOrder", RegisterService.class);
         serviceMap.put("cancelOrder", RegisterService.class);
