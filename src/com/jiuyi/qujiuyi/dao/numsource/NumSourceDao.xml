@@ -31,7 +31,7 @@
               #{numSourceId,  mode=IN,  jdbcType=VARCHAR},
               #{userCardId,   mode=IN,  jdbcType=VARCHAR},
               
-              #{visitCost,    mode=OUT, jdbcType=VARCHAR},
+              #{visitCost,    mode=OUT, jdbcType=DOUBLE},
               #{resultCode,   mode=OUT, jdbcType=INTEGER},
               #{resultDesc,   mode=OUT, jdbcType=VARCHAR}
            )}
