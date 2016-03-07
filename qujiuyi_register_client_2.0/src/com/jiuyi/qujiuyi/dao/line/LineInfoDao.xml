@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiuyi.qujiuyi.dao.line.LineInfoDao">
+    <select id="getLineInfo" parameterType="LineInfoDto" resultType="LineInfoDto">
+        select * from view_lineInfo
+        <where>
+            numSourceId = #{numSourceId}
+        </where>
+    </select>
+    
+    <select id="getVisitStatus" parameterType="LineInfoDto" resultType="LineInfoDto">
+        select * from view_visitStatus
+        <where>
+            numSourceId = #{numSourceId}
+            and visitNo = #{visitNo}
+        </where>
+    </select>
+</mapper>
