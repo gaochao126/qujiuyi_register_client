@@ -2,6 +2,7 @@ package com.jiuyi.qujiuyi.dao.numsource;
 
 import java.util.List;
 
+import com.jiuyi.qujiuyi.dto.ResponseDto;
 import com.jiuyi.qujiuyi.dto.numsource.NumSourceDto;
 
 /**
@@ -17,4 +18,12 @@ public interface NumSourceDao {
      * @throws Exception
      */
     public List<NumSourceDto> getNumSource(NumSourceDto numSourceDto) throws Exception;
+
+    /**
+     * @description 挂号费用查询
+     * @param numSourceDto
+     * @return
+     * @throws Exception
+     */
+    public ResponseDto getVisitCost(NumSourceDto numSourceDto) throws Exception;
 }
