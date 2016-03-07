@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiuyi.qujiuyi.dao.numsource.NumSourceDao">
+    <select id="getNumSource" parameterType="NumSourceDto" resultType="NumSourceDto">
+        select * from view_numSource
+        <where>
+            <if test="startTime != null">
+                startTime > #{startTime}
+            </if>
+            <if test="endTime != null">
+                and endTime &lt; #{endTime}
+            </if>
+            <if test="departmentId != null and departmentId != ''">
+                and departmentId = #{departmentId}
+            </if>
+            <if test="doctorId != null and doctorId != ''">
+                and doctorId = #{doctorId}
+            </if>
+            <if test="doctorName != null and doctorName != ''">
+                and doctorName = #{doctorName}
+            </if>
+            <if test="numSourceId != null and numSourceId != ''">
+            	and numSourceId = #{numSourceId}
+            </if>
+        </where>
+    </select>
+</mapper>

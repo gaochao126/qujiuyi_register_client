@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiuyi.qujiuyi.dao.register.RegisterDao">
+    <select id="commitOrder"  parameterType="RegisterDto" statementType="CALLABLE" resultType="RegisterDto">
+        <![CDATA[
+           {call proc_commitOrder(
+              #{numSourceId,  mode=IN,  jdbcType=VARCHAR},
+              #{payMode,      mode=IN,  jdbcType=INTEGER},
+              #{userName,     mode=IN,  jdbcType=VARCHAR},
+              #{userCardType, mode=IN,  jdbcType=INTEGER},
+              #{userCardId,   mode=IN,  jdbcType=VARCHAR},
+              #{userSex,      mode=IN,  jdbcType=INTEGER},
+              #{userBirthday, mode=IN,  jdbcType=DATE},
+              #{userPhone,    mode=IN,  jdbcType=VARCHAR},
+              
+              #{visitNo,      mode=OUT, jdbcType=VARCHAR},
+              #{billNo,       mode=OUT, jdbcType=VARCHAR},
+              #{resultCode,   mode=OUT, jdbcType=INTEGER},
+              #{resultDesc,   mode=OUT, jdbcType=VARCHAR}
+           )}
+       ]]>
+    </select>
+    
+    <select id="cancelOrder"  parameterType="RegisterDto" statementType="CALLABLE" resultType="RegisterDto">
+        <![CDATA[
+           {call proc_cancelOrder(
+              #{numSourceId,  mode=IN,  jdbcType=VARCHAR},
+              #{visitNo,      mode=IN,  jdbcType=VARCHAR},
+              
+              #{resultCode,   mode=OUT, jdbcType=INTEGER},
+              #{resultDesc,   mode=OUT, jdbcType=VARCHAR}
+           )}
+       ]]>
+    </select>
+    
+    <select id="fetchNumber"  parameterType="RegisterDto" statementType="CALLABLE" resultType="RegisterDto">
+        <![CDATA[
+           {call proc_fetchNumber(
+              #{numSourceId,  mode=IN,  jdbcType=VARCHAR},
+              #{visitNo,      mode=IN,  jdbcType=VARCHAR},
+              
+              #{resultCode,   mode=OUT, jdbcType=INTEGER},
+              #{resultDesc,   mode=OUT, jdbcType=VARCHAR}
+           )}
+       ]]>
+    </select>
+</mapper>
