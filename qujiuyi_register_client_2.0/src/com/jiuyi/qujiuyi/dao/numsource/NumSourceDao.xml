@@ -24,4 +24,17 @@
             </if>
         </where>
     </select>
+    
+    <select id="getVisitCost"  parameterType="NumSourceDto" statementType="CALLABLE" resultType="NumSourceDto">
+        <![CDATA[
+           {call proc_getVisitCost(
+              #{numSourceId,  mode=IN,  jdbcType=VARCHAR},
+              #{userCardId,   mode=IN,  jdbcType=VARCHAR},
+              
+              #{visitCost,    mode=OUT, jdbcType=VARCHAR},
+              #{resultCode,   mode=OUT, jdbcType=INTEGER},
+              #{resultDesc,   mode=OUT, jdbcType=VARCHAR}
+           )}
+       ]]>
+    </select>
 </mapper>

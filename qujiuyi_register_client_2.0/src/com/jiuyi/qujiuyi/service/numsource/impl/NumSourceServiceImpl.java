@@ -111,6 +111,14 @@ public class NumSourceServiceImpl implements NumSourceService {
      * @throws Exception
      */
     public ResponseDto getVisitCost(NumSourceDto numSourceDto) throws Exception {
-        return null;
+        numSourceDao.getVisitCost(numSourceDto);
+
+        ResponseDto result = new ResponseDto();
+        result.setResultCode(numSourceDto.getResultCode());
+        result.setResultDesc(numSourceDto.getResultDesc());
+        Map<String, Object> detail = new HashMap<String, Object>();
+        result.setDetail(detail);
+        detail.put("visitNo", numSourceDto.getVisitCost());
+        return result;
     }
 }
