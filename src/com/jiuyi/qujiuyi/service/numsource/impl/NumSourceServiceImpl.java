@@ -103,4 +103,14 @@ public class NumSourceServiceImpl implements NumSourceService {
         result.setResultDesc("同步成功");
         return result;
     }
+
+    /**
+     * @description 挂号费用查询
+     * @param numSourceDto
+     * @return
+     * @throws Exception
+     */
+    public ResponseDto getVisitCost(NumSourceDto numSourceDto) throws Exception {
+        return null;
+    }
 }
