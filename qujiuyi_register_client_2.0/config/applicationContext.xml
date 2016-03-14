@@ -25,7 +25,7 @@
     <!-- 配置数据源属性文件引入oracle.properties -->      
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">    
         <property name="location">    
-            <value>/WEB-INF/classes/oracle.properties</value>    
+            <value>/WEB-INF/classes/sybase.properties</value>    
         </property>    
     </bean>
 
