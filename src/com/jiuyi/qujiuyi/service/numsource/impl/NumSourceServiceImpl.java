@@ -118,7 +118,7 @@ public class NumSourceServiceImpl implements NumSourceService {
         result.setResultDesc(numSourceDto.getResultDesc());
         Map<String, Object> detail = new HashMap<String, Object>();
         result.setDetail(detail);
-        detail.put("visitNo", numSourceDto.getVisitCost());
+        detail.put("visitCost", numSourceDto.getVisitCost());
         return result;
     }
 }
