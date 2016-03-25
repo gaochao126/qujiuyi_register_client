@@ -22,10 +22,10 @@
     <context:annotation-config />
     <tx:annotation-driven />
 
-    <!-- 配置数据源属性文件引入oracle.properties -->      
+    <!-- 配置数据源属性文件引入oracle.properties -->
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">    
         <property name="location">    
-            <value>/WEB-INF/classes/oracle.properties</value>    
+            <value>/WEB-INF/classes/sqlserver.properties</value>    
         </property>    
     </bean>
 
