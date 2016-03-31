@@ -22,6 +22,9 @@
             <if test="numSourceId != null and numSourceId != ''">
             	and numSourceId = #{numSourceId}
             </if>
+            <if test="stopVisitStatus != null">
+            	and stopVisitStatus = #{stopVisitStatus}
+            </if>
         </where>
     </select>
     
