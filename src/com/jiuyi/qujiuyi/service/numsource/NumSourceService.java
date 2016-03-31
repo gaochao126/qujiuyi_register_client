@@ -32,4 +32,10 @@ public interface NumSourceService {
      * @throws Exception
      */
     public ResponseDto getVisitCost(NumSourceDto numSourceDto) throws Exception;
+
+    /**
+     * @description 同步停诊号源
+     * @throws Exception
+     */
+    public void syncIsStopNumSource() throws Exception;
 }

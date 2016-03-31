@@ -121,4 +121,12 @@ public class NumSourceServiceImpl implements NumSourceService {
         detail.put("visitCost", numSourceDto.getVisitCost());
         return result;
     }
+
+    /**
+     * @description 同步停诊号源
+     * @throws Exception
+     */
+    public void syncIsStopNumSource() throws Exception {
+        Date date = new Date();
+    }
 }
