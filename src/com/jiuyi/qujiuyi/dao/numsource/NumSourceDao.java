@@ -20,6 +20,14 @@ public interface NumSourceDao {
     public List<NumSourceDto> getNumSource(NumSourceDto numSourceDto) throws Exception;
 
     /**
+     * @description 获取停诊号源
+     * @param numSourceDto
+     * @return
+     * @throws Exception
+     */
+    public List<NumSourceDto> getStopNumSource(NumSourceDto numSourceDto) throws Exception;
+
+    /**
      * @description 挂号费用查询
      * @param numSourceDto
      * @return

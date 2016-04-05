@@ -22,9 +22,17 @@
             <if test="numSourceId != null and numSourceId != ''">
             	and numSourceId = #{numSourceId}
             </if>
-            <if test="stopVisitStatus != null">
-            	and stopVisitStatus = #{stopVisitStatus}
+           	and stopVisitStatus = 0
+        </where>
+    </select>
+    
+    <select id="getStopNumSource" parameterType="NumSourceDto" resultType="NumSourceDto">
+    	select * from view_numSource
+    	<where>
+            <if test="startTime != null">
+                startTime &gt; #{startTime}
             </if>
+           	and stopVisitStatus = 1
         </where>
     </select>
     

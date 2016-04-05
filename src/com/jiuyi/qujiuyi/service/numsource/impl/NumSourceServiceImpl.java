@@ -129,5 +129,12 @@ public class NumSourceServiceImpl implements NumSourceService {
     public void syncIsStopNumSource() throws Exception {
         Date date = new Date();
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String timeStr = sdf.format(date);
+        Date date2 = sdf.parse(timeStr.split(" ")[0] + " 12:00:00");
+
+        NumSourceDto numSourceDto = new NumSourceDto();
+        numSourceDto.setStartTime(date.before(date2) ? sdf.parse(timeStr.split(" ")[0] + " 00:00:00") : date2);
+        numSourceDto.setStopVisitStatus(1);
     }
 }
