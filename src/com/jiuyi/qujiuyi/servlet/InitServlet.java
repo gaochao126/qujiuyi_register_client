@@ -15,6 +15,7 @@ import com.jiuyi.qujiuyi.common.dit.CacheContainer;
 import com.jiuyi.qujiuyi.common.dit.Constants;
 import com.jiuyi.qujiuyi.common.handler.LineInfoThreadHandler;
 import com.jiuyi.qujiuyi.dto.line.LineInfoDto;
+import com.jiuyi.qujiuyi.service.numsource.NumSourceService;
 
 /**
  * @description InitServlet
@@ -30,6 +31,7 @@ public class InitServlet extends HttpServlet {
         Constants.applicationContext = WebApplicationContextUtils.getWebApplicationContext(config.getServletContext());
         lineInfoTimerTask();
         clearExpireToken();
+        syncStopNumSource();
 	}
 
     /**
@@ -73,5 +75,18 @@ public class InitServlet extends HttpServlet {
                 }
             }
         }, 0, 60* 1000);
+    }
+
+    private void syncStopNumSource() {
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    Constants.applicationContext.getBean(NumSourceService.class).syncStopNumSource();
+                } catch (Exception e) {
+                    logger.error("", e);
+                }
+            }
+        }, 0, 120 * 1000);
     }
 }
