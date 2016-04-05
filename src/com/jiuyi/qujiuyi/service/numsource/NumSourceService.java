@@ -37,5 +37,5 @@ public interface NumSourceService {
      * @description 同步停诊号源
      * @throws Exception
      */
-    public void syncIsStopNumSource() throws Exception;
+    public void syncStopNumSource() throws Exception;
 }

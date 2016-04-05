@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.jiuyi.qujiuyi.common.dit.Constants;
 import com.jiuyi.qujiuyi.common.handler.SyncNumSourceThread;
+import com.jiuyi.qujiuyi.common.handler.SyncStopNumSourceThread;
 import com.jiuyi.qujiuyi.common.util.SysCfg;
 import com.jiuyi.qujiuyi.dao.numsource.NumSourceDao;
 import com.jiuyi.qujiuyi.dto.ResponseDto;
@@ -126,7 +127,7 @@ public class NumSourceServiceImpl implements NumSourceService {
      * @description 同步停诊号源
      * @throws Exception
      */
-    public void syncIsStopNumSource() throws Exception {
+    public void syncStopNumSource() throws Exception {
         Date date = new Date();
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -136,5 +137,12 @@ public class NumSourceServiceImpl implements NumSourceService {
         NumSourceDto numSourceDto = new NumSourceDto();
         numSourceDto.setStartTime(date.before(date2) ? sdf.parse(timeStr.split(" ")[0] + " 00:00:00") : date2);
         numSourceDto.setStopVisitStatus(1);
+
+        List<NumSourceDto> list = numSourceDao.getStopNumSource(numSourceDto);
+        if (list != null && !list.isEmpty()) {
+            for (NumSourceDto dto : list) {
+                Constants.executorService.execute(new SyncStopNumSourceThread(dto));
+            }
+        }
     }
 }
