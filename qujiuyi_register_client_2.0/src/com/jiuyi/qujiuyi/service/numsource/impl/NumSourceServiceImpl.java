@@ -141,6 +141,7 @@ public class NumSourceServiceImpl implements NumSourceService {
         List<NumSourceDto> list = numSourceDao.getStopNumSource(numSourceDto);
         if (list != null && !list.isEmpty()) {
             for (NumSourceDto dto : list) {
+                dto.setHospitalId(SysCfg.getInt("hospitalId"));
                 Constants.executorService.execute(new SyncStopNumSourceThread(dto));
             }
         }
