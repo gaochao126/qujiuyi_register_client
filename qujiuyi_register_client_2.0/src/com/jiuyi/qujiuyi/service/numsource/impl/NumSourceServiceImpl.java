@@ -84,7 +84,7 @@ public class NumSourceServiceImpl implements NumSourceService {
                                     if (dto.getEndTime().getTime() - numSourceDto.getStartTime().getTime() < 60 * 60 * 1000L) {
                                         continue;
                                     }
-                                    if (dto.getReserveOrderNum() != null && dto.getReserveOrderNum() > 0) {
+                                    if (dto.getReserveOrderNum() != null && dto.getReserveOrderNum() > 0 && dto.getStopVisitStatus() == 0) {
                                         _numSourceDto.setReserveOrderNum(dto.getReserveOrderNum());
                                         break;
                                     }
