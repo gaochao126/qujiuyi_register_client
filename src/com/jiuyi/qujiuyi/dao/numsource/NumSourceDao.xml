@@ -5,7 +5,7 @@
         select * from view_numSource
         <where>
             <if test="startTime != null">
-                startTime > #{startTime}
+               	startTime &gt; #{startTime}
             </if>
             <if test="endTime != null">
                 and endTime &lt; #{endTime}
@@ -31,6 +31,9 @@
     	<where>
             <if test="startTime != null">
                 startTime &gt; #{startTime}
+            </if>
+            <if test="endTime != null">
+                and endTime &lt; #{endTime}
             </if>
            	and stopVisitStatus = 1
         </where>
