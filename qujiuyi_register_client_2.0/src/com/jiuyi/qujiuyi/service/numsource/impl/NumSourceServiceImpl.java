@@ -14,6 +14,7 @@ import com.jiuyi.qujiuyi.common.dit.Constants;
 import com.jiuyi.qujiuyi.common.handler.SyncNumSourceThread;
 import com.jiuyi.qujiuyi.common.handler.SyncStopNumSourceThread;
 import com.jiuyi.qujiuyi.common.util.SysCfg;
+import com.jiuyi.qujiuyi.common.util.Util;
 import com.jiuyi.qujiuyi.dao.numsource.NumSourceDao;
 import com.jiuyi.qujiuyi.dto.ResponseDto;
 import com.jiuyi.qujiuyi.dto.numsource.NumSourceDto;
@@ -45,6 +46,7 @@ public class NumSourceServiceImpl implements NumSourceService {
         result.setResultDesc("成功");
         Map<String, Object> detail = new HashMap<String, Object>();
         result.setDetail(detail);
+        numSourceDto.setEndTime(new Date(Util.getEndTimeOfWeek().getTime() + 14 * 24 * 60 * 60 * 1000L));
         detail.put("list", numSourceDao.getNumSource(numSourceDto));
         return result;
     }
@@ -75,6 +77,7 @@ public class NumSourceServiceImpl implements NumSourceService {
                         for (String doctorId : list) {
                             NumSourceDto _numSourceDto = new NumSourceDto();
                             _numSourceDto.setDoctorId(doctorId);
+                            _numSourceDto.setEndTime(new Date(Util.getEndTimeOfWeek().getTime() + 14 * 24 * 60 * 60 * 1000L));
                             List<NumSourceDto> l = numSourceDao.getNumSource(_numSourceDto);
                             _numSourceDto.setReserveOrderNum(0);
                             _numSourceDto.setHospitalId(SysCfg.getInt("hospitalId"));
@@ -136,6 +139,7 @@ public class NumSourceServiceImpl implements NumSourceService {
 
         NumSourceDto numSourceDto = new NumSourceDto();
         numSourceDto.setStartTime(date.before(date2) ? sdf.parse(timeStr.split(" ")[0] + " 00:00:00") : date2);
+        numSourceDto.setEndTime(new Date(Util.getEndTimeOfWeek().getTime() + 14 * 24 * 60 * 60 * 1000L));
         numSourceDto.setStopVisitStatus(1);
 
         List<NumSourceDto> list = numSourceDao.getStopNumSource(numSourceDto);
