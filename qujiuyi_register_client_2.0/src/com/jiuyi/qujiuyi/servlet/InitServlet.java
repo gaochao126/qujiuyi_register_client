@@ -87,6 +87,6 @@ public class InitServlet extends HttpServlet {
                     logger.error("", e);
                 }
             }
-        }, 0, 300 * 1000);
+        }, 0, 600 * 1000);
     }
 }
