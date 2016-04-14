@@ -31,7 +31,7 @@ public class InitServlet extends HttpServlet {
         Constants.applicationContext = WebApplicationContextUtils.getWebApplicationContext(config.getServletContext());
         lineInfoTimerTask();
         clearExpireToken();
-        // syncStopNumSource();
+        syncStopNumSource();
 	}
 
     /**

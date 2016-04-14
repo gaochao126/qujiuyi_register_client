@@ -139,7 +139,7 @@ public class NumSourceServiceImpl implements NumSourceService {
 
         NumSourceDto numSourceDto = new NumSourceDto();
         numSourceDto.setStartTime(date.before(date2) ? sdf.parse(timeStr.split(" ")[0] + " 00:00:00") : date2);
-        numSourceDto.setEndTime(new Date(Util.getEndTimeOfWeek().getTime() + 14 * 24 * 60 * 60 * 1000L));
+        numSourceDto.setEndTime(sdf.parse(timeStr.split(" ")[0] + " 12:59:59"));
         numSourceDto.setStopVisitStatus(1);
 
         List<NumSourceDto> list = numSourceDao.getStopNumSource(numSourceDto);
