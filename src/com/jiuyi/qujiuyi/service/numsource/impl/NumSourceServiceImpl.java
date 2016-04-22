@@ -46,7 +46,9 @@ public class NumSourceServiceImpl implements NumSourceService {
         result.setResultDesc("成功");
         Map<String, Object> detail = new HashMap<String, Object>();
         result.setDetail(detail);
-        numSourceDto.setEndTime(new Date(Util.getEndTimeOfWeek().getTime() + 14 * 24 * 60 * 60 * 1000L));
+        if (numSourceDto.getEndTime() == null) {
+            numSourceDto.setEndTime(new Date(Util.getEndTimeOfWeek().getTime() + 14 * 24 * 60 * 60 * 1000L));
+        }
         detail.put("list", numSourceDao.getNumSource(numSourceDto));
         return result;
     }
