@@ -5,10 +5,10 @@
         select * from view_numSource
         <where>
             <if test="startTime != null">
-               	startTime &gt; #{startTime}
+               	<![CDATA[ startTime > #{startTime} ]]>
             </if>
             <if test="endTime != null">
-                and endTime &lt; #{endTime}
+                <![CDATA[ and endTime < #{endTime} ]]>
             </if>
             <if test="departmentId != null and departmentId != ''">
                 and departmentId = #{departmentId}
@@ -30,10 +30,10 @@
     	select * from view_numSource
     	<where>
             <if test="startTime != null">
-                startTime &gt; #{startTime}
+                <![CDATA[ startTime > #{startTime} ]]>
             </if>
             <if test="endTime != null">
-                and endTime &lt; #{endTime}
+                <![CDATA[ and endTime < #{endTime} ]]>
             </if>
            	and stopVisitStatus = 1
         </where>
