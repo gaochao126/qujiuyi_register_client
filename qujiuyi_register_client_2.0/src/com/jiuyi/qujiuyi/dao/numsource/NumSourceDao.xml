@@ -29,13 +29,13 @@
     <select id="getStopNumSource" parameterType="NumSourceDto" resultType="NumSourceDto">
     	select * from view_numSource
     	<where>
+    		stopVisitStatus = 1
             <if test="startTime != null">
-                <![CDATA[ startTime > #{startTime} ]]>
+                <![CDATA[ and startTime > #{startTime} ]]>
             </if>
             <if test="endTime != null">
                 <![CDATA[ and endTime < #{endTime} ]]>
             </if>
-           	and stopVisitStatus = 1
         </where>
     </select>
     
