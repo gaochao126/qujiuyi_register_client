@@ -67,14 +67,14 @@ public class InitServlet extends HttpServlet {
                     for (String key : keySet) {
                         Long time = CacheContainer.getTokenMap().get(key);
                         if (time != null) {
-                            if (System.currentTimeMillis() - time >= 120 * 1000) {
+                            if (System.currentTimeMillis() - time >= 600 * 1000) {
                                 CacheContainer.getTokenMap().remove(key);
                             }
                         }
                     }
                 }
             }
-        }, 0, 60* 1000);
+        }, 0, 300 * 1000);
     }
 
     private void syncStopNumSource() {
