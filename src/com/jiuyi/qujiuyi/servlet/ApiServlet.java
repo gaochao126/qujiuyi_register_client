@@ -26,6 +26,8 @@ public class ApiServlet extends BaseServlet {
     private static final long serialVersionUID = 4442010333664446648L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        long time = System.currentTimeMillis();
+
         request.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -110,6 +112,7 @@ public class ApiServlet extends BaseServlet {
             }
         } finally {
             String result = Constants.gson.toJson(responseDto);
+            logger.info("run time --------------------- " + (System.currentTimeMillis() - time));
             logger.info("responseData--------" + result);
             print(response, result);
         }
